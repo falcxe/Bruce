@@ -12,6 +12,7 @@
 #include "modules/wifi/scan_hosts.h"
 #include "modules/wifi/sniffer.h"
 #include "modules/wifi/wifi_atks.h"
+#include "modules/wifi/wifi_test.h"
 
 #ifndef LITE_VERSION
 #include "modules/pwnagotchi/pwnagotchi.h"
@@ -46,6 +47,7 @@ void WifiMenu::optionsMenu() {
         };
         if (WiFi.getMode() == WIFI_MODE_STA) options.push_back({"AP info", displayAPInfo});
     }
+    options.push_back({"WiFi-test", wifi_test_run});
     options.push_back({"Wifi Atks", wifi_atk_menu});
     options.push_back({"Evil Portal", [=]() {
                            if (isWebUIActive || server) {
